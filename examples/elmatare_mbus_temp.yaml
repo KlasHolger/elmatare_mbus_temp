@@ -25,8 +25,8 @@ external_components:
 
 # Enable Home Assistant API
 api:
-  encryption:
-    key: !secret api_encryption_key
+#  encryption:
+#    key: !secret api_encryption_key
 
 ota:
   - platform: esphome
