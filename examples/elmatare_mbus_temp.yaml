@@ -15,9 +15,13 @@ esp32:
 
 # External Components
 external_components:
-  - source: github://KlasHolgerFile/esphome-mbus-reader
-    components: [mbus_reader]
-    refresh: 0h
+#  - source: github://KlasHolgerFile/esphome-mbus-reader
+#    components: [mbus_reader]
+#    refresh: 0h
+   - source:
+       type: local
+       path: /config/esphome/components
+     components: [mbus_reader]
 
 # Enable Home Assistant API
 api:
