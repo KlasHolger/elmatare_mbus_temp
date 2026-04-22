@@ -1,0 +1,172 @@
+# Kamstrup Omnipower M-Bus Reader with External Component
+# Version: 2.1.0 (2026-04-20)
+# ESPHome external component migration
+# Author: Klas Jansson
+
+esphome:
+  name: elmatare-mbus-temp
+  friendly_name: Electricity Meter M-Bus Reader
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+    version: 2.0.14
+
+# External Components
+external_components:
+  - source: github://KlasHolgerFile/esphome-mbus-reader
+    components: [mbus_reader]
+    refresh: 0h
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: !secret api_encryption_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: "elmatare_mbus Fallback Hotspot"
+    password: !secret fallback_password
+
+captive_portal:
+
+logger:
+  level: DEBUG
+  baud_rate: 0
+
+# UART Configuration for M-Bus Reader
+uart:
+  id: uart_bus
+  rx_pin:
+    number: 16
+  baud_rate: 2400
+  parity: NONE
+  stop_bits: 1
+  data_bits: 8
+
+# One-Wire Dallas Temperature Sensor
+one_wire:
+  - platform: gpio
+    pin: 18
+
+# Sensors Configuration
+sensor:
+  # Dallas Temperature Sensor (External)
+  - platform: dallas_temp
+    address: 0x8200000627eb1d28
+    name: "Outdoor Temperature"
+    id: outdoor_temp
+    unit_of_measurement: "°C"
+    accuracy_decimals: 1
+    filters:
+      - offset: -0.5
+    update_interval: 60s
+
+  # M-Bus Reader Component - Kamstrup Omnipower
+  - platform: mbus_reader
+    uart_id: uart_bus
+    
+    # Active Power Output (kW) - OBIS 1.1.1.7.0.255
+    wattage_sensor:
+      name: "AMS Wattage"
+      id: ams_wattage
+      unit_of_measurement: "kW"
+      device_class: power
+      state_class: measurement
+      accuracy_decimals: 2
+      icon: mdi:lightning-bolt
+      
+    # Reactive Power (VAr) - OBIS 1.1.4.7.0.255
+    reactive_power_sensor:
+      name: "AMS Reactive Power"
+      id: ams_reactive_power
+      unit_of_measurement: "VAr"
+      state_class: measurement
+      accuracy_decimals: 2
+      icon: mdi:lightning-bolt-outline
+      
+    # Current Phase L1 (A) - OBIS 1.1.31.7.0.255
+    amperage_l1_sensor:
+      name: "AMS Current L1"
+      id: ams_amperage_l1
+      unit_of_measurement: "A"
+      device_class: current
+      state_class: measurement
+      accuracy_decimals: 2
+      icon: mdi:sine-wave
+      
+    # Current Phase L2 (A) - OBIS 1.1.51.7.0.255
+    amperage_l2_sensor:
+      name: "AMS Current L2"
+      id: ams_amperage_l2
+      unit_of_measurement: "A"
+      device_class: current
+      state_class: measurement
+      accuracy_decimals: 2
+      icon: mdi:sine-wave
+      
+    # Current Phase L3 (A) - OBIS 1.1.71.7.0.255
+    amperage_l3_sensor:
+      name: "AMS Current L3"
+      id: ams_amperage_l3
+      unit_of_measurement: "A"
+      device_class: current
+      state_class: measurement
+      accuracy_decimals: 2
+      icon: mdi:sine-wave
+      
+    # Voltage Phase L1 (V) - OBIS 1.1.32.7.0.255
+    voltage_l1_sensor:
+      name: "AMS Voltage L1"
+      id: ams_voltage_l1
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      accuracy_decimals: 0
+      icon: mdi:lightning-bolt
+      
+    # Voltage Phase L2 (V) - OBIS 1.1.52.7.0.255
+    voltage_l2_sensor:
+      name: "AMS Voltage L2"
+      id: ams_voltage_l2
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      accuracy_decimals: 0
+      icon: mdi:lightning-bolt
+      
+    # Voltage Phase L3 (V) - OBIS 1.1.72.7.0.255
+    voltage_l3_sensor:
+      name: "AMS Voltage L3"
+      id: ams_voltage_l3
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      accuracy_decimals: 0
+      icon: mdi:lightning-bolt
+      
+    # Active Energy Total (kWh) - OBIS 1.1.1.8.0.255
+    energy_sensor:
+      name: "AMS Total Energy"
+      id: ams_energy_total
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: total_increasing
+      accuracy_decimals: 2
+      icon: mdi:lightning-bolt
+      
+    # Reactive Energy (kVArh) - OBIS 1.1.4.8.0.255
+    reactive_energy_sensor:
+      name: "AMS Reactive Energy"
+      id: ams_reactive_energy
+      unit_of_measurement: "kVArh"
+      state_class: total_increasing
+      accuracy_decimals: 2
+      icon: mdi:lightning-bolt-outline
