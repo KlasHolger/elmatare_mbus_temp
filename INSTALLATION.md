@@ -16,6 +16,7 @@ Your structure should look like:
 │   └── mbus_reader/
 │       ├── __init__.py
 │       ├── mbus_reader.h
+│       ├── mbus_reader.h
 │       ├── mbus_reader.cpp
 │       └── manifest.yaml
 ├── elmatare_mbus_temp.yaml
