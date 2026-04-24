@@ -34,6 +34,7 @@ your-esphome-config/
 ├── components/
 │   └── mbus_reader/
 │       ├── __init__.py
+│       ├── sensor.py
 │       ├── mbus_reader.h
 │       ├── mbus_reader.cpp
 │       └── manifest.yaml
