@@ -15,7 +15,7 @@ Your structure should look like:
 ├── components/
 │   └── mbus_reader/
 │       ├── __init__.py
-│       ├── mbus_reader.h
+│       ├── sensor.py
 │       ├── mbus_reader.h
 │       ├── mbus_reader.cpp
 │       └── manifest.yaml
