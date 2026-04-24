@@ -1,7 +1,6 @@
-# Kamstrup Omnipower M-Bus Reader with External Component
-# Version: 2.1.0 (2026-04-20)
-# ESPHome external component migration
-# Author: Klas Jansson
+# Kamstrup Omnipower M-Bus Reader - Local Component Version
+# Version: 2.1.1 (2026-04-23)
+# Local component structure for debugging
 
 esphome:
   name: elmatare-mbus-temp
@@ -13,20 +12,14 @@ esp32:
     type: arduino
     version: 2.0.14
 
-# External Components
+# LOCAL External Components
 external_components:
-#  - source: github://KlasHolgerFile/esphome-mbus-reader
-#    components: [mbus_reader]
-#    refresh: 0h
-   - source:
-       type: local
-       path: /config/esphome/components
-     components: [mbus_reader]
+  - source: components
 
 # Enable Home Assistant API
 api:
-#  encryption:
-#    key: !secret api_encryption_key
+  encryption:
+    key: !secret api_encryption_key
 
 ota:
   - platform: esphome
@@ -49,7 +42,7 @@ logger:
 uart:
   id: uart_bus
   rx_pin:
-    number: 16
+    number: GPIO16
   baud_rate: 2400
   parity: NONE
   stop_bits: 1
@@ -58,7 +51,7 @@ uart:
 # One-Wire Dallas Temperature Sensor
 one_wire:
   - platform: gpio
-    pin: 18
+    pin: GPIO18
 
 # Sensors Configuration
 sensor:

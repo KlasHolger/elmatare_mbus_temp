@@ -1,9 +1,11 @@
 version: 1.0.0
 type: component
-documentation: https://github.com/KlasHolgerFile/esphome-mbus-reader
-issue_tracker: https://github.com/KlasHolgerFile/esphome-mbus-reader/issues
+documentation: https://github.com/KlasHolger/elmatare_mbus_temp
 dependencies:
   esphome:
     version: ">=2024.1.0"
 codeowners:
-  - "@KlasHolgerFile"
+  - "@KlasHolger"
+  
+  
+  
