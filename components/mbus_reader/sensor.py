@@ -2,7 +2,6 @@ import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import uart, sensor
 from esphome.const import (
-    CONF_ID,
     UNIT_WATT,
     UNIT_AMPERE,
     UNIT_VOLT,
@@ -15,7 +14,7 @@ from esphome.const import (
     STATE_CLASS_TOTAL_INCREASING,
 )
 
-# Import the component from __init__.py
+# Import component class from __init__
 from . import mbus_reader_ns, MbusReader
 
 CONF_WATTAGE_SENSOR = "wattage_sensor"
