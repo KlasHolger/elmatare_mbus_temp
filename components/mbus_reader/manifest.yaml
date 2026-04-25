@@ -1,11 +1,9 @@
 version: 1.0.0
 type: component
 documentation: https://github.com/KlasHolger/elmatare_mbus_temp
+issue_tracker: https://github.com/KlasHolger/elmatare_mbus_temp/issues
 dependencies:
   esphome:
     version: ">=2024.1.0"
 codeowners:
   - "@KlasHolger"
-  
-  
-  
