@@ -24,10 +24,11 @@ CONF_VOLTAGE_L2_SENSOR = "voltage_l2_sensor"
 CONF_VOLTAGE_L3_SENSOR = "voltage_l3_sensor"
 CONF_ENERGY_SENSOR = "energy_sensor"
 CONF_REACTIVE_ENERGY_SENSOR = "reactive_energy_sensor"
+CONF_MBUS_ID = "mbus_id"
 
 CONFIG_SCHEMA = cv.Schema(
     {
-        cv.GenerateID(): cv.use_id(cg.esphome_ns.class_("MbusReader")),
+        cv.GenerateID(CONF_MBUS_ID): cv.use_id(cg.esphome_ns.class_("MbusReader")),
         cv.Optional(CONF_WATTAGE_SENSOR): sensor.sensor_schema(
             unit_of_measurement="kW",
             accuracy_decimals=2,
@@ -90,7 +91,7 @@ CONFIG_SCHEMA = cv.Schema(
 )
 
 async def to_code(config):
-    var = cg.get_variable(config[cv.GenerateID()])
+    var = await cg.get_variable(config[CONF_MBUS_ID])
 
     if CONF_WATTAGE_SENSOR in config:
         sens = await sensor.new_sensor(config[CONF_WATTAGE_SENSOR])
