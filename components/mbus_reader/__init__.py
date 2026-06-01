@@ -16,5 +16,5 @@ MbusReader = mbus_reader_ns.class_("MbusReader", cg.Component, uart.UARTDevice)
 
 async def to_code(config):
     uart_component = await cg.get_variable(config["uart_id"])
-    var = cg.new_Pvariable(config[cg.GenerateID()], uart_component)
+    var = cg.new_Pvariable(config[cv.GenerateID()], uart_component)
     await cg.register_component(var, config)
