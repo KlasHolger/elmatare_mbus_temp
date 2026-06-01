@@ -1,0 +1,136 @@
+# Kamstrup Omnipower M-Bus Reader with ESPHome External Component
+# Version: 2.2.0 (2026-04-25)
+# Author: Klas Jansson
+
+esphome:
+  name: elmatare-mbus-temp
+  friendly_name: Electricity Meter M-Bus Reader
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+    version: latest
+
+# External component from GitHub
+#external_components:
+#  - source: github://KlasHolger/elmatare_mbus_temp@main
+#    components: [mbus_reader]
+#    refresh: 0s #Hämta om
+
+api:
+  encryption:
+    key: !secret api_encryption_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: "elmatare_mbus Fallback Hotspot"
+    password: !secret fallback_password
+
+captive_portal:
+
+logger:
+  level: DEBUG
+  baud_rate: 0
+
+uart:
+  id: uart_bus
+  rx_pin:
+    number: GPIO16
+  baud_rate: 2400
+  parity: NONE
+  stop_bits: 1
+  data_bits: 8
+
+one_wire:
+  - platform: gpio
+    pin: GPIO18
+
+mbus_reader:
+  uart_id: uart_bus
+
+sensor:
+  - platform: dallas_temp
+    address: 0x8200000627eb1d28
+    name: "Outdoor Temperature"
+    id: outdoor_temp
+    unit_of_measurement: "°C"
+    accuracy_decimals: 1
+    filters:
+      - offset: -0.5
+    update_interval: 60s
+
+  - platform: mbus_reader
+    wattage_sensor:
+      name: "AMS Wattage"
+      unit_of_measurement: "kW"
+      device_class: power
+      state_class: measurement
+      accuracy_decimals: 2
+      
+    reactive_power_sensor:
+      name: "AMS Reactive Power"
+      unit_of_measurement: "VAr"
+      state_class: measurement
+      accuracy_decimals: 2
+      
+    amperage_l1_sensor:
+      name: "AMS Current L1"
+      unit_of_measurement: "A"
+      device_class: current
+      state_class: measurement
+      accuracy_decimals: 2
+      
+    amperage_l2_sensor:
+      name: "AMS Current L2"
+      unit_of_measurement: "A"
+      device_class: current
+      state_class: measurement
+      accuracy_decimals: 2
+      
+    amperage_l3_sensor:
+      name: "AMS Current L3"
+      unit_of_measurement: "A"
+      device_class: current
+      state_class: measurement
+      accuracy_decimals: 2
+      
+    voltage_l1_sensor:
+      name: "AMS Voltage L1"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      accuracy_decimals: 0
+      
+    voltage_l2_sensor:
+      name: "AMS Voltage L2"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      accuracy_decimals: 0
+      
+    voltage_l3_sensor:
+      name: "AMS Voltage L3"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      accuracy_decimals: 0
+      
+    energy_sensor:
+      name: "AMS Total Energy"
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: total_increasing
+      accuracy_decimals: 2
+      
+    reactive_energy_sensor:
+      name: "AMS Reactive Energy"
+      unit_of_measurement: "kVArh"
+      state_class: total_increasing
+      accuracy_decimals: 2
