@@ -7,7 +7,7 @@ DEPENDENCIES = ["uart"]
 CONFIG_SCHEMA = cv.Schema(
     {
         cv.GenerateID(): cv.declare_id(cg.esphome_ns.class_("MbusReader")),
-        cv.Required(cv.Required("uart_id")): cv.use_id(uart.UART_COMPONENT_SCHEMA),
+        cv.Required("uart_id"): cv.use_id(uart.UARTComponent),
     }
 ).extend(cv.COMPONENT_SCHEMA)
 
@@ -16,5 +16,5 @@ MbusReader = mbus_reader_ns.class_("MbusReader", cg.Component, uart.UARTDevice)
 
 async def to_code(config):
     uart_component = await cg.get_variable(config["uart_id"])
-    var = cg.new_Pvariable(config[cg.cv.GenerateID()], uart_component)
+    var = cg.new_Pvariable(config[cg.GenerateID()], uart_component)
     await cg.register_component(var, config)
