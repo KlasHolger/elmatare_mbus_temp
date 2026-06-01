@@ -52,9 +52,6 @@ one_wire:
   - platform: gpio
     pin: GPIO18
 
-mbus_reader:
-  uart_id: uart_bus
-
 sensor:
   - platform: dallas_temp
     address: 0x8200000627eb1d28
@@ -67,6 +64,8 @@ sensor:
     update_interval: 60s
 
   - platform: mbus_reader
+    uart_id: uart_bus
+    
     wattage_sensor:
       name: "AMS Wattage"
       unit_of_measurement: "kW"
