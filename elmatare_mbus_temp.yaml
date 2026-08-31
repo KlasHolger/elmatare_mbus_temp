@@ -63,8 +63,7 @@ sensor:
       - offset: -0.5
     update_interval: 60s
 
-# M-Bus Reader component - now using external component
-# NOTE: This is a top-level component block provided by the external component
+# M-Bus Reader component - top-level block provided by the external component
 mbus_reader:
   uart_id: uart_bus
 
