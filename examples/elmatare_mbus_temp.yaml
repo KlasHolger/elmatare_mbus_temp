@@ -62,73 +62,74 @@ sensor:
       - offset: -0.5
     update_interval: 60s
 
-  - platform: mbus_reader
-    uart_id: uart_bus
-    
-    wattage_sensor:
-      name: "AMS Wattage"
-      unit_of_measurement: "kW"
-      device_class: power
-      state_class: measurement
-      accuracy_decimals: 2
-      
-    reactive_power_sensor:
-      name: "AMS Reactive Power"
-      unit_of_measurement: "VAr"
-      state_class: measurement
-      accuracy_decimals: 2
-      
-    amperage_l1_sensor:
-      name: "AMS Current L1"
-      unit_of_measurement: "A"
-      device_class: current
-      state_class: measurement
-      accuracy_decimals: 2
-      
-    amperage_l2_sensor:
-      name: "AMS Current L2"
-      unit_of_measurement: "A"
-      device_class: current
-      state_class: measurement
-      accuracy_decimals: 2
-      
-    amperage_l3_sensor:
-      name: "AMS Current L3"
-      unit_of_measurement: "A"
-      device_class: current
-      state_class: measurement
-      accuracy_decimals: 2
-      
-    voltage_l1_sensor:
-      name: "AMS Voltage L1"
-      unit_of_measurement: "V"
-      device_class: voltage
-      state_class: measurement
-      accuracy_decimals: 0
-      
-    voltage_l2_sensor:
-      name: "AMS Voltage L2"
-      unit_of_measurement: "V"
-      device_class: voltage
-      state_class: measurement
-      accuracy_decimals: 0
-      
-    voltage_l3_sensor:
-      name: "AMS Voltage L3"
-      unit_of_measurement: "V"
-      device_class: voltage
-      state_class: measurement
-      accuracy_decimals: 0
-      
-    energy_sensor:
-      name: "AMS Total Energy"
-      unit_of_measurement: "kWh"
-      device_class: energy
-      state_class: total_increasing
-      accuracy_decimals: 2
-      
-    reactive_energy_sensor:
-      name: "AMS Reactive Energy"
-      unit_of_measurement: "kVArh"
-      state_class: total_increasing
-      accuracy_decimals: 2
+# M-Bus Reader component - top-level block provided by the external component
+mbus_reader:
+  uart_id: uart_bus
+
+  wattage_sensor:
+    name: "AMS Wattage"
+    unit_of_measurement: "kW"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 2
+
+  reactive_power_sensor:
+    name: "AMS Reactive Power"
+    unit_of_measurement: "VAr"
+    state_class: measurement
+    accuracy_decimals: 2
+
+  amperage_l1_sensor:
+    name: "AMS Current L1"
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+
+  amperage_l2_sensor:
+    name: "AMS Current L2"
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+
+  amperage_l3_sensor:
+    name: "AMS Current L3"
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+
+  voltage_l1_sensor:
+    name: "AMS Voltage L1"
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 0
+
+  voltage_l2_sensor:
+    name: "AMS Voltage L2"
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 0
+
+  voltage_l3_sensor:
+    name: "AMS Voltage L3"
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 0
+
+  energy_sensor:
+    name: "AMS Total Energy"
+    unit_of_measurement: "kWh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+
+  reactive_energy_sensor:
+    name: "AMS Reactive Energy"
+    unit_of_measurement: "kVArh"
+    state_class: total_increasing
+    accuracy_decimals: 2
