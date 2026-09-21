@@ -11,6 +11,10 @@ esp32:
   framework:
     type: arduino
     version: latest
+#  tillfogat 20260921
+    advanced: 
+      minimum_chip_revision: "3.0"
+      sram1_as_iram: true
 
 # External component from GitHub
 # Force rebuild: 2026-09-07 20:40
