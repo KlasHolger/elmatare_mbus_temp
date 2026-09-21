@@ -1,17 +1,10 @@
-# ESPHome M-Bus Reader Component - Kamstrup Omnipower
+# Kamstrup Omnipower M-Bus Reader with ESPHome External Component
 
-ESPHome external component for reading electricity meter data from Kamstrup Omnipower meters via M-Bus/NVE-HAN interface.
-
-## Features
-
-- **10 OBIS Codes**: Active Power, Current (3-phase), Voltage (3-phase), Reactive Power, Energy
-- **Home Assistant Integration**: Full device class support
-- **External Component**: Modern ESPHome architecture
-- **Real-time Monitoring**: Updates every 10 seconds
+This repository provides an ESPHome external component for reading electricity-meter data from Kamstrup Omnipower meters through an M-Bus/NVE-HAN interface.
 
 ## Installation
 
-Add to your ESPHome YAML:
+Add the following to your ESPHome YAML. The reader is a top-level component; it is not configured as `sensor: - platform: mbus_reader`.
 
 ```yaml
 external_components:
@@ -22,35 +15,54 @@ uart:
   id: uart_bus
   rx_pin: GPIO16
   baud_rate: 2400
+  parity: NONE
+  stop_bits: 1
+  data_bits: 8
 
-sensor:
-  - platform: mbus_reader
-    uart_id: uart_bus
-    wattage_sensor:
-      name: "Power Usage"
-    # ... more sensors
+mbus_reader:
+  uart_id: uart_bus
+  wattage_sensor:
+    name: "Power Usage"
+  reactive_power_sensor:
+    name: "Reactive Power"
+  amperage_l1_sensor:
+    name: "Current L1"
+  amperage_l2_sensor:
+    name: "Current L2"
+  amperage_l3_sensor:
+    name: "Current L3"
+  voltage_l1_sensor:
+    name: "Voltage L1"
+  voltage_l2_sensor:
+    name: "Voltage L2"
+  voltage_l3_sensor:
+    name: "Voltage L3"
+  energy_sensor:
+    name: "Total Energy"
+  reactive_energy_sensor:
+    name: "Reactive Energy"
 ```
 
-## Supported OBIS Codes
+## Supported OBIS codes
 
-| OBIS Code | Description | Unit |
-|-----------|-------------|------|
-| 1.1.1.7.0.255 | Active Power | kW |
-| 1.1.31.7.0.255 | Current L1 | A |
-| 1.1.51.7.0.255 | Current L2 | A |
-| 1.1.71.7.0.255 | Current L3 | A |
-| 1.1.32.7.0.255 | Voltage L1 | V |
-| 1.1.52.7.0.255 | Voltage L2 | V |
-| 1.1.72.7.0.255 | Voltage L3 | V |
-| 1.1.1.8.0.255 | Total Energy | kWh |
-| 1.1.4.7.0.255 | Reactive Power | VAr |
-| 1.1.4.8.0.255 | Reactive Energy | kVArh |
+| OBIS code | Description | Unit |
+|---|---|---|
+| `1.1.1.7.0.255` | Active power | kW |
+| `1.1.31.7.0.255` | Current L1 | A |
+| `1.1.51.7.0.255` | Current L2 | A |
+| `1.1.71.7.0.255` | Current L3 | A |
+| `1.1.32.7.0.255` | Voltage L1 | V |
+| `1.1.52.7.0.255` | Voltage L2 | V |
+| `1.1.72.7.0.255` | Voltage L3 | V |
+| `1.1.1.8.0.255` | Total energy | kWh |
+| `1.1.4.7.0.255` | Reactive power | VAr |
+| `1.1.4.8.0.255` | Reactive energy | kVArh |
 
 ## Hardware
 
 - ESP32 with UART
 - Kamstrup Omnipower meter with NVE-HAN port
-- Voltage divider (5V to 3.3V)
+- Voltage divider (5 V to 3.3 V)
 
 ## License
 
