@@ -1,5 +1,5 @@
 # Kamstrup Omnipower M-Bus Reader with ESPHome External Component
-# Version: 2.2.0 (2026-04-25)
+# Version: 2.2.0 (2026-09-21)
 # Author: Klas Jansson
 
 esphome:
@@ -13,13 +13,15 @@ esp32:
     version: latest
 
 # External component from GitHub
+# Force rebuild: 2026-09-07 20:40
 external_components:
   - source: github://KlasHolger/elmatare_mbus_temp@main
     components: [mbus_reader]
+    refresh: 0s
 
 api:
-  encryption:
-    key: !secret api_encryption_key
+#  encryption:
+#    key: !secret api_encryption_key
 
 ota:
   - platform: esphome
