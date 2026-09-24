@@ -55,23 +55,26 @@ GND                 │  Ground
 #### Kamstrup Omnipower NVE-HAN Port:
 ```
 Kamstrup Pin  │  Signal  │  ESP32 Connection
-──────────────┼──────────┼─────────────────────
-Pin 1         │  Data+   │  Not used
+──────────────┼──────────┼───────────────────────────────────────────
+Pin 1         │  MBUS+   │  M-BUS Data/Power (12-24V, max 144nW, 6mA)
 Pin 2         │  GND     │  GND
-Pin 3         │  Vcc +5V │  +5V supply
-Pin 4         │  Data-   │  GPIO 16 (via 1k/2k voltage divider)
-Pin 5         │  GND     │  GND
+Pin 3         │  N/C     │  Not used
+Pin 4         │  N/C     │  Not used
+Pin 5         │  N/C     │  Not used
+Pin 6         │  N/C     │  Not used
+Pin 7         │  N/C     │  Not used
+Pin 8         │  N/C     │  Not used
 ```
 
-#### Voltage Divider (ESSENTIAL!):
+#### Protocol converter:
 
 ```
-Kamstrup Pin4 (5V) ──┬── 1kΩ resistor ──┬── ESP32 GPIO 16 (3.3V max)
-                     │                   │
-                     └─ 2kΩ resistor ────┴── GND
+Kamstrup Pin1(MBUS+) ──── M-BUS ──── TX ──── ESP32 GPIO 16 
+                            M-BUS Slave
+         Pin2(GND)   ──── M-BUS ──── GND ─── ESP32 GND  
+                     
 ```
 
-This protects your ESP32 from 5V input damage.
 
 ### Step 4: Compile & Flash
 
