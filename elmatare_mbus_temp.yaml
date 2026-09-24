@@ -129,7 +129,7 @@ mbus_reader:
     accuracy_decimals: 0
 
   energy_sensor:
-    name: "AMS Total Energy"
+    name: "AMS Energy"
     unit_of_measurement: "kWh"
     device_class: energy
     state_class: total_increasing
