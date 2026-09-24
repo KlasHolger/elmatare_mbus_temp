@@ -62,7 +62,7 @@ mbus_reader:
 
 - ESP32 with UART
 - Kamstrup Omnipower meter with NVE-HAN port
-- Voltage divider (5 V to 3.3 V)
+- M-Bus Slave
 
 ## License
 

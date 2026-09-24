@@ -159,7 +159,7 @@ logger:
 | Issue | Solution |
 |-------|----------|
 | **No UART data** | Check GPIO 16 connection, verify RX pin definition |
-| **Garbage values** | Check baud rate (2400), verify voltage divider |
+| **Garbage values** | Check baud rate (2400)  |
 | **Random disconnects** | Check power supply stability, add capacitor near power |
 | **Missing sensors** | Check YAML syntax, run `esphome validate` |
 | **High packet loss** | Add 100µF capacitor near ESP32 power pins |
