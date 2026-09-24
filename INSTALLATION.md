@@ -67,7 +67,7 @@ Pin 8         │  N/C     │  Not used
 ```
 
 #### Protocol converter:
-
+eg. Mikrone M-Bus Slave Click
 ```
 Kamstrup Pin1(MBUS+) ──── M-BUS ──── TX ──── ESP32 GPIO 16 
                             M-BUS Slave
