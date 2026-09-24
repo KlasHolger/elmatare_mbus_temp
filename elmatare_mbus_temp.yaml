@@ -18,7 +18,7 @@ esp32:
 
 # External component from GitHub
 external_components:
-  - source: github://KlasHolger/elmatare_mbus_temp@main
+  - source: github://KlasHolger/elmatare_mbus_temp@sater
     components: [mbus_reader]
 # Force rebuild: 2026-09-07 20:40
     refresh: 0s
