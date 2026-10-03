@@ -60,8 +60,8 @@ one_wire:
 
 sensor:
   - platform: dallas_temp
-#    address: 0x8200000627eb1d28
-    address: 0x374ba58b1d64ff28
+    address: 0x8200000627eb1d28
+#    address: 0x374ba58b1d64ff28
     name: "Outdoor Temperature"
     id: outdoor_temp
     unit_of_measurement: "°C"
