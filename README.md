@@ -26,11 +26,11 @@ mbus_reader:
   reactive_power_sensor:
     name: "Reactive Power"
   amperage_l1_sensor:
-    name: "Current L1"
+    name: "Amperage L1"
   amperage_l2_sensor:
-    name: "Current L2"
+    name: "Amperage L2"
   amperage_l3_sensor:
-    name: "Current L3"
+    name: "Amperage L3"
   voltage_l1_sensor:
     name: "Voltage L1"
   voltage_l2_sensor:
@@ -48,9 +48,9 @@ mbus_reader:
 | OBIS code | Description | Unit |
 |---|---|---|
 | `1.1.1.7.0.255` | Active power | kW |
-| `1.1.31.7.0.255` | Current L1 | A |
-| `1.1.51.7.0.255` | Current L2 | A |
-| `1.1.71.7.0.255` | Current L3 | A |
+| `1.1.31.7.0.255` | Amperage L1 | A |
+| `1.1.51.7.0.255` | Amperage L2 | A |
+| `1.1.71.7.0.255` | Amperage L3 | A |
 | `1.1.32.7.0.255` | Voltage L1 | V |
 | `1.1.52.7.0.255` | Voltage L2 | V |
 | `1.1.72.7.0.255` | Voltage L3 | V |
