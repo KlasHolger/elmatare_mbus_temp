@@ -48,7 +48,7 @@ ESP32 (Dev Kit)     │  Function
 ────────────────────┼──────────────────
 GPIO 16 (RX)        │  M-Bus Data (from interface)
 GPIO 18 (GPIO)      │  Dallas One-Wire (optional)
-3V3                 │  Power (through voltage divider)
+3V3                 │  Power (optional through voltage for divider_temp )
 GND                 │  Ground
 ```
 
