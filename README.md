@@ -1,6 +1,7 @@
 # Kamstrup Omnipower M-Bus Reader with ESPHome External Component
 
 This repository provides an ESPHome external component for reading electricity-meter data from Kamstrup Omnipower meters through an M-Bus/NVE-HAN interface.
+This version is limited to handling energy imports. For exports, the code needs to be supplemented with additional OBIS code.
 
 ## Installation
 
