@@ -88,21 +88,21 @@ mbus_reader:
     accuracy_decimals: 2
 
   amperage_l1_sensor:
-    name: "AMS Current L1"
+    name: "AMS Amperage L1"
     unit_of_measurement: "A"
     device_class: current
     state_class: measurement
     accuracy_decimals: 2
 
   amperage_l2_sensor:
-    name: "AMS Current L2"
+    name: "AMS Amperage L2"
     unit_of_measurement: "A"
     device_class: current
     state_class: measurement
     accuracy_decimals: 2
 
   amperage_l3_sensor:
-    name: "AMS Current L3"
+    name: "AMS Amperage L3"
     unit_of_measurement: "A"
     device_class: current
     state_class: measurement
