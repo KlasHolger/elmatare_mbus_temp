@@ -194,9 +194,8 @@ For issues:
 4. Review README.md
 5. Open GitHub issue with logs attached
 
-## Hardware
+## Hardware Examples
 
-**Examples**
 M-BUS converter
 ![M-BUS converter](images/m-bus-slave-click.jpg)
 
