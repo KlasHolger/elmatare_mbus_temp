@@ -193,3 +193,9 @@ For issues:
 3. Check hardware connections
 4. Review README.md
 5. Open GitHub issue with logs attached
+
+
+
+![M-BUS converter](images/m-bus-slave-click.jpg)
+
+![ESP-32 pinout](images/ESP32-Pinout.jpg)
