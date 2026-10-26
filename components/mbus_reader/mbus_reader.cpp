@@ -38,7 +38,7 @@ bool MbusReader::read_message_() {
         uart_counter_++;
 
         // Parse OBIS codes from buffer
-        for (uint16_t i = 0; i < uart_counter_ && i < 256; i++) {
+        for (uint16_t i = 1; i + 11 < uart_counter_; i++) {
           if (uart_buffer_[i - 1] == 9 && uart_buffer_[i] == 6) {
             parse_obis_data_(i);
           }
